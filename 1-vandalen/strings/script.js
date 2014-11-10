@@ -5,14 +5,34 @@ window.onload = function(){
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
 		// Plats för förändring.		
-		// Returnera den konverterade strängen.
-		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
-	
 
+		
+		
+	if (str === "")
+		{
+			throw new Error("Please write a string of words!");
+			// Vid fel, kasta ett undantag med ett meddelande till användaren. 
+		}
+			
+	var newArray = [];//deklarerar en ny array
+	  newArray = str.split("");
 
-
-
-
+	for (var i = 0; i < str.length; i++) // skapar en for lop som ska göra detta för varje bokstav!!
+	{
+		if (newArray[i] === newArray[i].toUpperCase()) // detta är elementet och sätter och visar stor bokstav!
+		{
+		newArray[i] = newArray[i].toLowerCase(); // elementet som finns på i blir nu liten boksav och placeras i min newArray på platsen [i]
+		}
+		else
+		{
+			newArray[i] = newArray[i].toUpperCase();// annars så körs denna igen!
+		}
+	}
+			
+			str = newArray.toString(); // 
+			str = str.split(/,/).join("");
+			str = str.split(/[aA]/).join("#");
+			return str; 		// Returnera den konverterade strängen.
 
 	};
 	// ------------------------------------------------------------------------------

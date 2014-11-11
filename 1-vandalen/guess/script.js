@@ -32,7 +32,7 @@ window.onload = function(){
 		}
 		
 		if(number > secret)// ska här kolla ifall det hemliga är mindre än det personen skrev in!   (&& number<maxNumber + 1)
-		{											//ändring! någon sade att man skulle ha [] paranteser men () funkar lika bra!! så ändrade!
+		{			//Ändring! Trodde programmet skulle funka med () men hade fel!
 			count += 1;
 			return [false, "Sorry the secret number is smaller!"];//returnerar false för talet är inte RÄTT!!
 					// [false, "Det hemliga talet är lägre!"]

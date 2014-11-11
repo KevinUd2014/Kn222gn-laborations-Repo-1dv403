@@ -15,11 +15,11 @@ window.onload = function(){
 		}
 			
 	var newArray = [];//deklarerar en ny array
-	  newArray = str.split("");
+	  newArray = str.split(""); // tar bort mellanslagen
 
 	for (var i = 0; i < str.length; i++) // skapar en for lop som ska göra detta för varje bokstav!!
 	{
-		if (newArray[i] === newArray[i].toUpperCase()) // detta är elementet och sätter och visar stor bokstav!
+		if (newArray[i] === newArray[i].toUpperCase()) // detta är elementet som sätter och visar stor bokstav!
 		{
 		newArray[i] = newArray[i].toLowerCase(); // elementet som finns på i blir nu liten boksav och placeras i min newArray på platsen [i]
 		}
@@ -30,8 +30,8 @@ window.onload = function(){
 	}
 			
 			str = newArray.toString(); // 
-			str = str.split(/,/).join("");
-			str = str.split(/[aA]/).join("#");
+			str = str.split(/,/).join("");// denna tar bort de olika , som arrayen är uppdelad i!
+			str = str.split(/[aA]/).join("#"); // denna funktion ersätter både små a och stora A med #
 			return str; 		// Returnera den konverterade strängen.
 
 	};

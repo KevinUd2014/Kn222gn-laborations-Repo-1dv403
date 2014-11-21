@@ -20,7 +20,7 @@ window.onload = function(){
 		if (number == secret)//ska här kolla ifall nu personen har gissat det hemliga talet och kommer isåfall skriva ut nedrestående rad! med vad numret var, hur många försök personen hade på sig!"
 		{
 			count += 1;
-			return [true, "Congratulations the secret number was " + secret + " And you tried " + count + " times to find it."];
+			return [true, "Congratulations! the secret number was " + secret + " And you tried " + count + " times to find it."];
 					// [true, "Grattis du vann! Det hemliga talet var X och du behövde Y gissningar för att hitta det."]
 		}
 		

@@ -35,7 +35,6 @@ window.onload = function(){
 			return str; 		// Returnera den konverterade strängen.
 
 	};
-	// ------------------------------------------------------------------------------
 
 
 	// Kod för att hantera utskrift och inmatning. Denna ska du inte behöva förändra

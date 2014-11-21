@@ -18,7 +18,7 @@ window.onload = function(){
 		
 			var todayDate = new Date(); //Här skapar jag ett objekt med dagens datum!
 			var Year = todayDate.getFullYear(); // med vilket år det är
-			var Month = todayDate.getMonth();// månad det är // sätter dom olika datumen till dagens datum met get...
+			var Month = todayDate.getMonth();// månad det är // sätter dom olika datumen till dagens datumet get...
 			var Day = todayDate.getDate();// dag det är
 		
 			var birthdayYear;

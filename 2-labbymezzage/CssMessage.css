@@ -1,0 +1,55 @@
+body
+{
+    
+	background-image:url(../css/Pics/PhotoGallery/Easy.jpg);
+	background-repeat:no-repeat;
+	background-size:1000px 1080px;
+	width:100%;
+	margin-left:30%;
+	margin-right:30%;
+}
+
+
+#Image
+{
+  background-image:url(Pics/Message.png);
+  background-size:400px 300px;
+  background-position:left 4px center;
+  background-repeat: no-repeat;
+  text-align:left;
+  height:410px;
+}
+#numberOfMessages
+{
+}
+
+#textEntry
+{
+    
+}
+
+#sendButton
+{
+    width:30%;
+    height:40px;
+    font-size:110%;
+    float:left;
+}
+
+textarea
+{
+    float:left;
+}
+
+input
+{
+}
+
+  ::selection {
+  color:#F7F7F7;
+  background: #D0458E; /* Denna gör det kompatibelt med WebKit/Blink webläsare så som safari och google! */
+  }
+  ::-moz-selection {
+  color:#F7F7F7;
+  background: #D0458E; /* Denna gör koden kompatibell med Gecko webläsare alltså mozilla! */
+  }

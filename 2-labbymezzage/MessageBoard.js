@@ -2,7 +2,7 @@
     
     
     var MessageBoard = {
-     
+    
     message: [],
     numberOfMessages: 0,
      
@@ -16,8 +16,11 @@
     {
         var entry = document.getElementById("textEntry"). value;
         MessageBoard.message.push(new Message(entry, new Date()));
-        alert(MessageBoard.message[MessageBoard.numberOfMessages]);
+        //alert(MessageBoard.message[MessageBoard.numberOfMessages]);
         MessageBoard.numberOfMessages++;
+        document.getElementById("numberOfMessages").innerHTML = "Amount of Messages" + MessageBoard.numberOfMessages;
+        var arrayList = MessageBoard.message.length;
+        
     }
     
 };

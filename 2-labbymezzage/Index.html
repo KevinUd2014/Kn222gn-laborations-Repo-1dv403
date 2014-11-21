@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-	<meta charset="UTF-8" />
- 	<title>Javascript - Message Funktion</title>
- 	<style>
- 	
- 	</style>
-</head>
+    <head>
+            <meta charset="UTF-8" />
+            <title>Labby Message</title>
+            <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    
     <body>
+        <header>Message</header>
         
+        <main>
         
-        <script type="text/javascript" src="Message.js"></script>
-        <script type="text/javascript" src="MessageBoard.js"></script>
-    </body>
+            <div id="logo">
+            <img src="pics/logo.png" alt="">
+            </div>
+    	
+    	<p id="numberOfMessages">Message Count: 0</p>
+            
+            <textarea id="textEntry" rows="10" cols="90" placeholder="Write your message here..."></textarea>
+            <input id="sendButton" type="submit" value="Send" />
+        
+        </form>
+        
+        </main>
+            <script type="text/javascript" src="Message.js"></script>
+            <script type="text/javascript" src="MessageBoard.js"></script>
+        </body>
 </html>

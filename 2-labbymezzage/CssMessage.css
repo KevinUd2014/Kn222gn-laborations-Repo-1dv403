@@ -52,19 +52,19 @@ main
 #messagesSection
 {
     overflow-y:scroll;
-    min-height:380px;
-    height:380px;
+    min-height:245px;
+    height:245px;
     background:linear-gradient(#98FAB2,#98FAB2,#7FE49A,#7FE49A, #6DD589,#7FE49A,#6DD589,#7FE49A, #7FE49A,#98FAB2, #98FAB2);
 }
 #messagesSection p
 {
     word-break:break-all;
-    border:solid green 5px;
+    border:solid #98FAB2 2px;
     margin-right:10%;
-    padding:7px 7px 7px;
+    padding:6px 4px 7px;
     margin-left:10%;
     min-height:50px;
-    background-color:lightgreen;
+    background-color:#7FE49A;
 }
 input
 {

@@ -26,10 +26,10 @@
     RenderMessage: function(entry)  // tar emot entry variablen
     {
         var textString = document.createElement("p");// skapar en ny variabel och ett element p!
-        document.getElementById("messagesSection").innerHTML = textString + MessageBoard.messages[entry].getHTMLText() + textString;
-        //textString.innerHTML = MessageBoard.messages[entry].getHTMLText(); // 
-        messagesSection.appendChild(textString); // får inte denna att funka!!!!
+        //document.getElementById("messagesSection").innerHTML = textString + MessageBoard.messages[entry].getHTMLText() + textString;
+        textString.innerHTML = MessageBoard.message[entry].getHTMLText(); // 
         var funcTion = document.getElementById("messagesSection");
+        funcTion.appendChild(textString); // får inte denna att funka!!!!
         funcTion.scrollTop = funcTion.scrollHeight;
     }
     

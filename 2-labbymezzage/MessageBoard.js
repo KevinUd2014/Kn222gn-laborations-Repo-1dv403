@@ -3,24 +3,34 @@
     
     var MessageBoard = {
     
-    message: [],
-    numberOfMessages: 0,
+    message: [], // skapar en array! message
+    numberOfMessages: 0,// en funktion som ska hålla reda på hr många kommentarer de har skrivits!
      
     init:function()
     {
-         var newMessage = document.getElementById("sendButton");
-         newMessage.onclick = MessageBoard.sendMessage;
+         var send = document.getElementById("sendButton"); //skapar här en ny variabel som ska ta omhand om när man trycker på skicka knappen
+         send.onclick = MessageBoard.sendMessage;//när man nu trycker på skicka knappen så anropar denna funktionen send message som tar omhand om de skickade meddelnadet!
     },
     
-    sendMessage: function()
+    sendMessage: function() // skickade meddelande funktionen!
     {
-        var entry = document.getElementById("textEntry"). value;
-        MessageBoard.message.push(new Message(entry, new Date()));
+        var entry = document.getElementById("textEntry").value; // skapar nu en ny variabel som innehåller allt som står i text entry rutan och ger detta ett värde med value!
+        MessageBoard.message.push(new Message(entry, new Date()));// skapar här ett nytt message som innehåller entry variabeln och ett datum
         //alert(MessageBoard.message[MessageBoard.numberOfMessages]);
-        MessageBoard.numberOfMessages++;
-        document.getElementById("numberOfMessages").innerHTML = "Amount of Messages" + MessageBoard.numberOfMessages;
-        var arrayList = MessageBoard.message.length;
-        
+        MessageBoard.numberOfMessages++;// plussar här på antalet meddelanden
+        document.getElementById("numberOfMessages").innerHTML = "Message Count: " + MessageBoard.numberOfMessages;// länkar här nummer av meddelanden till denna skriver samma text vilket kommer ändras i html documentet!
+        var arrayList = MessageBoard.message.length -1; // skapar nu en array som ska innehålla alla meddelanden (vet inte riktigt vad -1 gör!)
+        MessageBoard.RenderMessage(arrayList);// skickar nu listan till render message !
+    },
+    
+    RenderMessage: function(entry)  // tar emot entry variablen
+    {
+        var textString = document.createElement("p");// skapar en ny variabel och ett element p!
+        document.getElementById("messagesSection").innerHTML = textString + MessageBoard.messages[entry].getHTMLText() + textString;
+        //textString.innerHTML = MessageBoard.messages[entry].getHTMLText(); // 
+        messagesSection.appendChild(textString); // får inte denna att funka!!!!
+        var funcTion = document.getElementById("messagesSection");
+        funcTion.scrollTop = funcTion.scrollHeight;
     }
     
 };

@@ -1,12 +1,19 @@
 body
 {
-    
-	background-image:url(../css/Pics/PhotoGallery/Easy.jpg);
-	background-repeat:no-repeat;
-	background-size:1000px 1080px;
-	width:100%;
-	margin-left:30%;
-	margin-right:30%;
+	width:1000px;
+	margin-left:16%;
+}
+header
+{
+    background-color:#98FAB2;
+}
+main
+{
+    background-color:#98FAB2;
+}
+.KevinMessage
+{
+    padding:10px 10px;
 }
 
 
@@ -14,33 +21,51 @@ body
 {
   background-image:url(Pics/Message.png);
   background-size:400px 300px;
-  background-position:left 4px center;
+  background-position:center 40px;
   background-repeat: no-repeat;
   text-align:left;
-  height:410px;
+  height:333px;
 }
 #numberOfMessages
 {
+    float:left;
+    margin-left:42%;
 }
-
+#ram{
+    display: inline-block;
+}
 #textEntry
 {
-    
+    float:left;
+    background-color:white;
+    margin-left:15%;
 }
 
 #sendButton
 {
-    width:30%;
+    width:45%;
     height:40px;
     font-size:110%;
     float:left;
+    margin-left:27%;
 }
-
-textarea
+#messagesSection
 {
-    float:left;
+    overflow-y:scroll;
+    min-height:380px;
+    height:380px;
+    background:linear-gradient(#98FAB2,#98FAB2,#7FE49A,#7FE49A, #6DD589,#7FE49A,#6DD589,#7FE49A, #7FE49A,#98FAB2, #98FAB2);
 }
-
+#messagesSection p
+{
+    word-break:break-all;
+    border:solid green 5px;
+    margin-right:10%;
+    padding:7px 7px 7px;
+    margin-left:10%;
+    min-height:50px;
+    background-color:lightgreen;
+}
 input
 {
 }

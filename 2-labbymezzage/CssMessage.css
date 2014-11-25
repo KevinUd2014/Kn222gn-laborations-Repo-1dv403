@@ -56,19 +56,63 @@ main
     height:245px;
     background:linear-gradient(#98FAB2,#98FAB2,#7FE49A,#7FE49A, #6DD589,#7FE49A,#6DD589,#7FE49A, #7FE49A,#98FAB2, #98FAB2);
 }
-#messagesSection p
+
+#textEntry
 {
+    font-family: Tahoma, Geneva, sans-serif;
+}
+p
+{
+    text-transform: capitalize;
+    font-family: Tahoma, Geneva, sans-serif;
+}
+img
+{
+    height:24px;
+    width:24px;
+}
+#textArea
+{
+    float:right;
+    min-width:900px;
+    max-width:900px;
     word-break:break-all;
     border:solid #98FAB2 2px;
-    margin-right:10%;
-    padding:6px 4px 7px;
-    margin-left:10%;
+    margin-right:4.5%;
     min-height:50px;
     background-color:#7FE49A;
 }
-input
+#textArea div
 {
+    float:left;
 }
+#textArea img
+{
+    float:right;
+    top:10px;
+}
+
+
+/*#Clock // funkar inte.......
+{
+    float:right;
+    bottom:94px;
+    margin-right:10.7%;
+}
+#timeNumber
+{
+    bottom:37px;
+    float:right;
+    margin-right:85.5%;
+    position:relative;
+}*/
+#allButtons
+{
+    bottom:5px;
+}
+
+
+
 
   ::selection {
   color:#F7F7F7;

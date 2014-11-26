@@ -1,0 +1,13 @@
+body
+{
+
+    background-image: url(PicsBackground/SouthPark.jpg);
+    background-size:1540px 790px;
+    /*background-position:center 40px;*/
+    background-repeat: no-repeat;
+}
+
+#memoryGame
+{
+    background-color:white;
+}

@@ -2,12 +2,29 @@ body
 {
 
     background-image: url(PicsBackground/SouthPark.jpg);
-    background-size:1540px 790px;
+    background-size:1600px 900px;
     /*background-position:center 40px;*/
     background-repeat: no-repeat;
 }
-
 #memoryGame
 {
-    background-color:white;
+    width:400px;
+    height:400px;
+    margin-left:4%;
+}
+table
+{
+    width:400px;
+    height:400px;
+    margin-left:10%;
+}
+/*table img
+{
+    width:24px;
+    height:24px;
+}*/
+#memoryGame
+{
+   background: rgb(50, 0, 40); /* The Fallback - faller in om nu en webbläsare inte kan läsa transparnet och rgba format!*/  /*hittade på - http://css-tricks.com/rgba-browser-support/*/
+   background: rgba(50, 0, 40, 0.8); /*anger färgen för spelrutan!!*/
 }

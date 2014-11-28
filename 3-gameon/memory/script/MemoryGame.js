@@ -10,8 +10,10 @@
     aTab:null,
     img: null,
     cell: null,
+    lastClicked:null,
     
     count: 0,
+    round: 0,
         
     init:function(){                                                                //skapar en init funktion där jag startar run game funktionen !
         //var array = startMemory.array;
@@ -68,8 +70,20 @@
     flipImage:function(){
         
         //var self = this;
-        this.firstChild.src = "Pics/" + this.picture + ".png";                      // anropar firstchild i img.src!!
+        this.firstChild.src = "Pics/" + this.picture + ".png";                      // anropar firstchild i  a taggen !!
         
+        startMemory.round += 1;
+        
+        if (startMemory.round === 2)
+        {
+            //var
+            if(startMemory.lastClicked === this.firstChild.src)
+            {
+                alert("Gick");
+            }
+            startMemory.round = 0;
+        }
+        startMemory.lastChild = this.firstChild.src;
         
     }
 };// end of startMemory

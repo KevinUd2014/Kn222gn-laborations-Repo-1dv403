@@ -1,8 +1,9 @@
 body
 {
-
+    width:auto;
+    height:auto;
     background-image: url(PicsBackground/SouthPark.jpg);
-    background-size:1680px 989px;
+    background-size:auto;
     /*background-position:center 40px;*/
     background-repeat: no-repeat;
 }
@@ -19,13 +20,22 @@ table
     height:490px;
     margin-left:10%;
 }
-/*table img
+table img
 {
-    width:24px;
-    height:24px;
-}*/
+    width:50px;
+    height:50px;
+}
 #memoryGame
 {
    background: rgb(50, 0, 40); /* The Fallback - faller in om nu en webbläsare inte kan läsa transparnet och rgba format!*/  /*hittade på - http://css-tricks.com/rgba-browser-support/*/
    background: rgba(0, 0, 0, 0.6); /*anger färgen för spelrutan!!*/
+}
+
+#ResaultBoard
+{
+    color:red;
+    margin-top:-29%;
+    margin-left:42.5%;
+    text-transform: capitalize;
+    font-family: Tahoma, Geneva, sans-serif;
 }

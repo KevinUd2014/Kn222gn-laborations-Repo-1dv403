@@ -47,6 +47,7 @@
                 var tdElement = document.createElement("td");                       //skapar ett td element i listan
                 
                 var aElement = document.createElement("a");                         // skapar ett a element
+                //aElement.pic ="Pics/"+ startMemory.array[startMemory.count] +".png";
                 aElement.href = "#";                                                // så att man kan taba igenom sidan!
                 
                 
@@ -56,7 +57,7 @@
                 
                 var img = document.createElement("img");
                 img.src = startMemory.defaultPicture;
-                img.flipImage = false;
+                img.flipImage = false; // om bilden inte är vänd så är det bild 0
                 img.id = "down";
                 img.newPicture = "Pics/" + startMemory.array[startMemory.count] + ".png";// aElement variablen är modifierad och enda gången detta kan skapa problem är om man jämnför! picture är en ny variabel i a Element
                 startMemory.count+=1;
@@ -65,12 +66,12 @@
                 //img.className = startMemory.array[startMemory.count];
                 //startMemory.aElement.onclick = startMemory.click(img, img.className); // hittade på en sida på google! // hade tänkt fel men tänkte med dessa innan!
                 
+                
+                aElement.addEventListener("click", startMemory.flipImage);
+                
                 aElement.appendChild(img);                          // lägger till alla förändringarna på dom olika ställena!!
                 tdElement.appendChild(aElement);
                 rows.appendChild(tdElement);
-                
-                img.addEventListener("click", startMemory.flipImage);
-                
                 //aElement.onclick = startMemory.flipImage;                           //anropar flip Image funktionen!
                 
                 //startMemory.count += 1;
@@ -80,38 +81,47 @@
         memoryArea.appendChild(table);
     },
     
-    flipImage:function(){
+    flipImage:function(e){
         
+            var picture; 
+            if(this == e.target) // här så ska vi fixa så att tab + enter vänder alla brickor!
+            {
+                picture = e.target.childNodes[0];
+            }
+            else
+            {
+                picture = e.target;
+            }
+            
+            //this = picture;
+            
             startMemory.newClick += 1;
         
-            this.src = this.newPicture;
-            this.flipImage = true;
+            picture.src = picture.newPicture;
+            picture.flipImage = true;
             
-            if (this.flipImage === true)  // om man nu 
-            {
-                //nowFliped.removeEventListener("click", startMemory.flipImage);
-                //nowFliped.onclick = null;
-            }
+            e.currentTarget.removeEventListener("click", startMemory.flipImage); // om en bild är vänd så tar jag bort klickfunktionen!
+            e.currentTarget.onclick = null;
                 
             if (startMemory.newClick === 2)
             {
-                var nowFliped = this;  //this är = bilden om jag inte minns fel!
+                var nowFliped = picture;                                       //this är = bilden om jag inte minns fel!
                 var last = startMemory.lastClicked;
-                startMemory.testCount += 1;  //räknar hur många gånger man vänder på 2 st bilder!!
+                startMemory.testCount += 1;                                 //räknar hur många gånger man vänder på 2 st bilder!!
                 
-                nowFliped.addEventListener("click", startMemory.flipImage);
-                nowFliped.onclick = true;
-                last.addEventListener("click", startMemory.flipImage);
-                last.onclick = true;
+                e.currentTarget.addEventListener("click", startMemory.flipImage); // lägger till klickfunktionen! tar jag bort denna så kan jag bara klicka på bilden 1 gång
+                e.currentTarget.onclick = true;
+                last.parentNode.addEventListener("click", startMemory.flipImage);
+                last.parentNode.onclick = true;
                 
-                if (nowFliped.newPicture === last.newPicture)// den här funktionen bestämmer om två bilder är av samma karaktär och gör så att dessa stannar uppvända!
+                if (nowFliped.newPicture === last.newPicture)               // den här funktionen bestämmer om två bilder är av samma karaktär och gör så att dessa stannar uppvända!
                 {
                     var lastclicked = last;
-                    nowFliped.removeEventListener("click", startMemory.flipImage);
-                    lastclicked.removeEventListener("click", startMemory.flipImage);
+                    nowFliped.parentNode.removeEventListener("click", startMemory.flipImage); // tar bort klickfunktionen när två av samma är vända!
+                    lastclicked.parentNode.removeEventListener("click", startMemory.flipImage);
                     nowFliped.onclick = null;
                     lastclicked.onclick = null;
-                    startMemory.turns += 1; // räknar paren som i nästa funktion kommer stanna programmet när alla bildpar är vända korrekt!
+                    startMemory.turns += 1;                                 // räknar paren som i nästa funktion kommer stanna programmet när alla bildpar är vända korrekt!
                     
                     if (startMemory.turns === startMemory.array.length / 2) //körs när alla par är uppvända korrekt!
                     {
@@ -122,7 +132,7 @@
                 
                 else
                 {
-                    setTimeout(function()
+                    setTimeout(function() // är dessa inte rätt så ska dessa vändas tillbaka och det fixar denna funktionen!
                     {
                        last.src = startMemory.defaultPicture;
                        nowFliped.src = startMemory.defaultPicture;
@@ -130,7 +140,7 @@
                 }
                     startMemory.newClick = 0;
             }
-                startMemory.lastClicked = this;
+            startMemory.lastClicked = picture;
                     
     }
 };// end of startMemory

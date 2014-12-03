@@ -97,7 +97,7 @@
             
             startMemory.newClick += 1;
         
-            picture.src = picture.newPicture;
+            picture.src = picture.newPicture;//
             picture.flipImage = true;
             
             e.currentTarget.removeEventListener("click", startMemory.flipImage); // om en bild är vänd så tar jag bort klickfunktionen!

@@ -23,6 +23,16 @@ body, html
     position:absolute;
     bottom:0px;
 }
+.Appbar img
+{
+    width:44px;
+    height:44px;
+}
+.Appbar img:hover
+{
+    width:46px;
+    height:46px;
+}
 .Window
 {
     position:absolute;
@@ -45,9 +55,16 @@ body, html
     /*text-align:center;*/
     color:white;
 }
-.WindowClose
+.WindowClose, .closeIcon
 {
     float:right;
+    /*margin-top:-17px;*/
+}
+
+.closeIcon:hover
+{
+    width:18px;
+    height:18px;
 }
 .Inside
 {

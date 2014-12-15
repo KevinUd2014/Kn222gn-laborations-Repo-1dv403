@@ -1,8 +1,8 @@
 "use strict";
 
 
-window.onload = function(){
-    
+window.onload = function()
+{
     var desk = new Desktop();
     
 };
@@ -10,11 +10,11 @@ window.onload = function(){
 /*Klass, Definition*/
 function Desktop()
 {
-    var desktop = document.querySelector("#Desktop");
+    var desktop = document.querySelector(".Desktop");
 }
 
 /*Klass, Definition*/
-function Window()
+function Window(desk)
 {
     var template = document.querySelector("#Template");
     var windowTemplate = template.content.querySelector(".Window");
@@ -25,7 +25,7 @@ function Window()
 /*Klass, Definition*/
 function Start()
 {
-    
+    this.element = document.querySelector(".Appbar");
 }
 
 /*Klass, Definition*/
@@ -33,3 +33,4 @@ function Icon()
 {
     
 }
+

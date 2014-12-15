@@ -1,0 +1,74 @@
+body, html
+{
+    padding:0;
+    margin:0;
+    width:100%;
+    height:100%;
+
+}
+.Desktop
+{
+    width:100%;
+    height:100%;
+    background-image:URL(Background.jpg);
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+.Appbar
+{
+    width:100%;
+    Height:50px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.8);
+    position:absolute;
+    bottom:0px;
+}
+.Window
+{
+    position:absolute;
+    width:300px;
+    height:400px;
+    color:white;
+    background: rgb(0, 0, 0); /* The Fallback - faller in om nu en webbläsare inte kan läsa transparnet och rgba format!*/  /*hittade på - http://css-tricks.com/rgba-browser-support/*/
+    background: rgba(0, 0, 0, 0.6); /*anger färgen för rutan!*/
+}
+.Topbar
+{
+    height:35px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.8);
+}
+.Title
+{
+    float:left;
+    /*margin-left:4%;*%
+    /*text-align:center;*/
+    color:white;
+}
+.WindowClose
+{
+    float:right;
+}
+.Inside
+{
+    height:330px;
+    color:white;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.4);
+}
+.BottomFrame
+{
+    height:35px;
+    color:white;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+  ::selection {
+  color:#F7F7F7;
+  background: #D0458E; /* Denna gör det kompatibelt med WebKit/Blink webläsare så som safari och google! */
+  }
+  ::-moz-selection {
+  color:#F7F7F7;
+  background: #D0458E; /* Denna gör koden kompatibell med Gecko webläsare alltså mozilla! */
+  }

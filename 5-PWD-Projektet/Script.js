@@ -39,10 +39,10 @@ function Window(desk, name, image)  // fick hjälp med alla dessa this i denna k
     this.createLoader();
     this.dragable();
 
-    closeButton.onclick = function ()                       //sätter att om  man klickar på X knappen så ska allt stängas!
+    closeButton.onclick = function ()                                       //sätter att om  man klickar på X knappen så ska allt stängas!
     {
         this.close();
-    }.bind(this);  // denna funktion binds till this objektet som i detta fall är close knappen!!
+    }.bind(this);                                                           // denna funktion binds till this objektet som i detta fall är close knappen!!
 }
 
 Window.prototype.close = function()                                         //när ett fönster stängs så kommer child och tas bort!!
@@ -59,48 +59,48 @@ Window.prototype.setPosition = function(x,y)                                //g�
 Window.prototype.createLoader = function() {
     this.loadingImg = document.createElement("img");
     this.BottomFrame = this.Window.querySelector(".BottomFrame");
-    this.loadingImg.src = "Pics/loading.gif";
+    this.loadingImg.src = "Pics/loading3.gif";
     this.loadingImg.className = "Loading";
     this.BottomFrame.appendChild(this.loadingImg);
 };
 
-Window.prototype.dragable = function () //  Fick hjälp av klasskompis med att hitta denna länk!  För att få fönster dragbara!  http://stackoverflow.com/questions/9334084/moveable-draggable-div.
+Window.prototype.dragable = function ()                                     //  Fick hjälp av klasskompis med att hitta denna länk!  För att få fönster dragbara!  http://stackoverflow.com/questions/9334084/moveable-draggable-div.
 {
     
-    var Window = this.Window;  // skapar en ny variabel med Window!
+    var Window = this.Window;                                               // skapar en ny variabel med Window!
     
-    var moveX; // skapar de olika offset vinklarna med x och y
+    var moveX;                                                              // skapar de olika offset vinklarna med x och y
     var moveY;
     
     var moveDiv = function (e)
     {
-        Window.style.left = e.clientX-moveX + 'px';  // ändrar stilen för mina div taggar med top och left och detta i pixlar!
+        Window.style.left = e.clientX-moveX + 'px';                         // ändrar stilen för mina div taggar med top och left och detta i pixlar!
         Window.style.top = e.clientY-moveY + 'px';
     };
     var mouseUp = function () 
     {
-        window.removeEventListener('mousemove', moveDiv, true);  // detta ska aktiveras när användaren håller ner musen!
+        window.removeEventListener('mousemove', moveDiv, true);             // detta ska aktiveras när användaren håller ner musen!
     };
 
     var mouseDown = function (e) 
     {
-        moveX = e.clientX - parseInt(Window.style.left);  // vet inte varför dessa får en varning!
+        moveX = e.clientX - parseInt(Window.style.left);                    // vet inte varför dessa får en varning!
         moveY = e.clientY - parseInt(Window.style.top);
         
-        window.addEventListener('mousemove', moveDiv, true);  // Fixar att om nu någon trycker ner musen så körs denna som true! och då kan man flytta rutan!
+        window.addEventListener('mousemove', moveDiv, true);                // Fixar att om nu någon trycker ner musen så körs denna som true! och då kan man flytta rutan!
     };
         var Topbar = this.Window.querySelector(".Topbar");
         Topbar.addEventListener("mousedown", mouseDown, false);
         window.addEventListener('mouseup', mouseUp, false);
     };
     
-Window.prototype.fullSizeImage = function (width, height)   // denna fixar storleken på bilderna!
+/*Window.prototype.fullSizeImage = function (width, height)                   // denna fixar storleken på bilderna!
 {
     //console.log(width + " " + height);
     
-    this.Window.style.width = width + "px";
-    this.Window.style.height = height + "px";
-};
+    //this.Window.style.width = width + "px";
+    //this.Window.style.height = height + "px";
+};*/
 
 /*Klass, Definition*/
 function Start(desk) //läger till iconerna i appbaren!
@@ -117,21 +117,23 @@ Start.prototype.addApp = function(name, url)                                //f�
     var self = this;
     this.element.appendChild(image);
     
-    image.addEventListener("click", function()
+    image.addEventListener("click", function()  // den här funktionen gör så att fle fönster öppnas med 10 px mellanrum!
     {
+        alert("hej")
         var windows = new Window(self.desk, name);
+        self.nameCheck(name, url, windows);
         self.start.x += 10;  //10px både på x och y axeln
         self.start.y += 10;
         windows.setPosition(self.start.x, self.start.y);
     });
 },
-Start.prototype.nameCheck = function(name, image)
+Start.prototype.nameCheck = function(name, image, windows)
 {
     if (name === "Gallery")
     {
-        new Gallery();
+        new Gallery(this.desk,windows);
     }
-    if (name === "Memory")  // ska göra samma som galleriet men med mitt memory spel tillsist!!
+    if (name === "Memory")                                                  // ska göra samma som galleriet men med mitt memory spel tillsist!!
     {
         console.log("The memory will be here!");
     }
@@ -139,46 +141,72 @@ Start.prototype.nameCheck = function(name, image)
 
 function Gallery(desk, Window)
 {
+    console.log("hej");
     this.Window = Window;
     this.getPictures(desk, Window);
 }
 
-Gallery.prototype.getPictures = function(desk, Window)  // Vet ej var jag ska använda Picture array!
+Gallery.prototype.getPictures = function(desk, Window)                      // Vet ej var jag ska använda Picture array!
 {
+    console.log("hej");
     var xhr = new XMLHttpRequest();
-    var self = this;
+    //var self = this;
     
-    
+    console.log(xhr.readyState);
     xhr.onreadystatechange = function()
     {
         if(xhr.readyState === 4)
         {
             Window.BottomFrame.removeChild(Window.loadingImg);
-            var pictureArray = JSON.parse(xhr.responseText);
-            this.Inside = Window.Window.querySelector(".Inside");  // lägger in detta i Inside classen! bilderna dvs.
             
-            for (var i = 0; i < pictureArray.length; i++) 
-            {  // och för varje bild i arrayen så skapar jag följande!
-                var imageContent = document.createElement("div");  // skapar en div tag!
-                imageContent.className = "ImageBox";  
+            document.querySelector(".BottomFrame").innerHTML = ("Done");
+            var pictureArray = JSON.parse(xhr.responseText);
+            
+            var inside = Window.Window.querySelector(".Inside");           // lägger in detta i Inside classen! bilderna dvs.
+            
+            var maxWidth = 0;
+            var maxHeight = 0;
+            
+            for (var i = 0; i < pictureArray.length; i++) // gör här alla thumbnails samma!
+            {
+                var h = pictureArray[i].thumbHeight;
+                var w = pictureArray[i].thumbWidth;
                 
-                var image = document.createElement("img");  //Skapar en img tag också som jag ska länka in bilderna i!
+                maxHeight = Math.max(h,maxHeight);
+                maxWidth = Math.max(w,maxWidth);
+            }
+            
+            for (var i = 0; i < pictureArray.length; i++)
+            {                                                               // och för varje bild i arrayen så skapar jag följande!
+                
                 
                 var aTag = document.createElement("a");
-                aTag.className = "newGallery";  //skapar en ny klass!
+                aTag.className = "newGallery";                              //skapar en ny klass!
                 aTag.href ="#";
+                aTag.imgurl = pictureArray[i].URL;
                 
-                image.className = pictureArray[i].URL;  // är lite osäker på dessa!
-                image.src = pictureArray[i].thumbURL; // fick hjälp med dem!
+                aTag.style.width = maxWidth + "px";  // ändrar här alla bildernna till största thumbnail bildens storlek!
+                aTag.style.height = maxHeight + "px";
+
                 
-                image.addEventListener("click", function() {
-                    
+                /*image.addEventListener("click", function() 
+                {
                     self.imgViewer(desk, this);  // man ska skickas vidare om man klickar på en bild nästa funktion"!!
-                    
-                });
-                imageContent.appendChild(image);
-                aTag.appendChild(imageContent);
-                this.Inside.appendChild(aTag);
+                });*/
+                
+                aTag.onclick = function(){
+                    var desk = document.querySelector(".Desktop");
+                    desk.style.backgroundImage = "url("+this.imgurl+")";
+                    desk.style.backgroundSize = "initial"; // sätter tillbaka till default storlek!
+                };
+                
+                aTag.href = "#";
+                
+                aTag.style.backgroundImage = "url(" + pictureArray[i].thumbURL + ")";  // sätter beroende på vilken bild man klickar på till backgrund
+                aTag.style.backgroundPosition = "center";  // centrerar backgrunden
+                aTag.style.backgroundRepeat = "no-repeat";  // repeterar inte!
+                
+                inside.appendChild(aTag);
             }
         }
     };
@@ -187,29 +215,30 @@ Gallery.prototype.getPictures = function(desk, Window)  // Vet ej var jag ska an
 };
 
 /*Klass, Prototyp, Definition*/
-Gallery.prototype.imgViewer = function(desk, img) {
-    
-    var name = "View Image";
-    var pic = document.createElement("img");
-    
-    pic.src = "Pics/File1.2.png";
-    
+/*Gallery.prototype.imgViewer = function(desk, img) // Denna ska visa de olika bilderna!
+{
     var image = document.createElement("img");
-    
     image.src = img.className;
     
-    var content = new Window(desk, name, pic);
+    //var name = "View Image";  // detta är namnet på den nya rutan som öppnas!
+    var picture = document.createElement("img");
+    picture.src = "Pics/File1.2.png";
+    
+    var content = new Window(desk, "Photo Viewer", picture);  // kanske ska vara image istället för pic
+    
     var Inside = content.Window.querySelector(".Inside");
     
     Inside.appendChild(image);
-    content.BottomFrame.removeChild(content.loadingImg);
+    Inside.parentNode.className = "imgViewer";
+    Inside.appendChild(image);
     
-    content.fullSizeImage(image.width, image.height);
-};
+    //content.BottomFrame.removeChild(content.loadingImg);
+    //content.fullSizeImage(image.width, image.height);
+};*/
 
 /*Klass, Definition*/
-function Icon()
+/*function Icon()
 {
     
-};
+};*/
 
